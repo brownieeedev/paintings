@@ -1,0 +1,30 @@
+section.banner
+    body
+        nav
+            div.div-logo
+                a(href="/")
+                    h1 Paintify
+            div.nav-links
+                ul
+                    li  
+                        a(href="/") Kezdőlap
+                    li
+                        a(href="/paintings") Festmények
+                    li
+                        a(href="/sell") Eladás
+                    li
+                        a(href="") Kapcsolat
+                    if user                        
+                        li
+                            a.nav__el.no(href='/me')
+                                img(src='/img/user_30px.png')
+                        li
+                            a.nav__el.no(href='/cart')
+                                img(src='/img/shopping_cart_32px_2.png')
+                        li 
+                            a.nav__el.nav__el--cta.nav__el--logout.no#logout Kijelentkezés
+                    else
+                        li 
+                            a.nav__el.nav__el--cta(href="/login") Bejelentkezés
+            //- script(src='public/js/login.js', type='module')
+

@@ -1,0 +1,56 @@
+extends base2
+
+block content
+    script(src='/js/sellScript.js',type="module")
+    body
+        section.form
+        h1.heading-secondary.ma-bt-md.eladascim Add el a festményeidet
+        form.form1(method='POST' enctype='multipart/form-data')
+            .input-group
+                input#festo(required='', type='text', name='festo' )
+                label(for='festo')
+                    i.fa-solid.fa-user
+                    | Festő
+            .input-group
+                input#cim(required='', type='text', name='cim')
+                label(for='cim')
+                    i.fa-solid.fa-signature
+                    | Festmény címe
+            .input-group
+                select#tipus(required='', name='tipus')
+                    option(value='', selected='', disabled='')
+                    option(value='Olaj') Olaj
+                    option(value='Akvarell') Akvarell
+                    option(value='Freskó') Freskó
+                    option(value='Monotípia') Monotípia
+                    option(value='Pasztell') Pasztell
+                    option(value='Gouche') Gouche
+                    option(value='Tempera') Tempera
+                    option(value='Enkausztika') Enkausztika
+                label(for='tipus')
+                    i.fa-solid.fa-palette
+                    | Típusa
+            .input-group
+                input#meret(required='', type='text' name='meret')
+                label(for='')
+                    i.fa-solid.fa-ruler
+                    | Mérete
+                    p(style='font-size:10px; display: inline-block;') (pl.: 400cm x 800cm)
+            .input-group
+                input#ar(required='', type='number' name='ar',min=5000,max=1500000, step=1000)
+                label(for='')
+                    i.fa-solid.fa-money-bill
+                    | Ára 
+            .input-group
+                textarea#leiras(name='', cols='20', rows='5', placeholder='')
+                label(for='')
+                    i.fa-solid.fa-message
+                    | Festményről leírás(nem kötelező)
+            .input-group
+                input#file(required='', accept='image/*', type='file', name='file', multiple)
+                label(for='')
+                    i.fa-solid.fa-image
+                    | Tölts fel 2-3 jóminőségű képet a festményedről
+            button.dateSkirtLabel(type='submit')
+                | FESTMÉNY FELTÖLTÉSE
+                i#leftIconPaperPlane.fa-solid.fa-paper-plane

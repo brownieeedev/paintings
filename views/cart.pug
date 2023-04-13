@@ -1,0 +1,38 @@
+extends base2
+
+block content
+    script(src='./js/cart.js',type='module')
+    body
+        div.small-container.cart-page
+        -var sumprice = sum
+        -var painting = 'Dancing'
+            table
+                tr
+                    th Festmény 
+                    th Részösszeg
+                each painting in paintings
+                    tr
+                        td
+                            div.cart-info
+                                img(src=painting.kepek, alt='')
+                                div
+                                    p #{painting.cim}
+                                    small Ár: #{painting.ar}
+                                    br
+                                    br
+                                    a.btnTorles(data-cim =`${painting.cim}`,href='') Törlés
+                        td #{painting.ar} Ft                 
+            div.totalprice
+                div.checkout                   
+                    button.btn.btn--green.btn--checkout(data-sum=`${sumprice}`) Tovább a fizetéshez
+                table
+                    tr
+                        td Összeg:
+                        td #{reszosszeg} Ft
+                    tr
+                        td Áfa:
+                        td #{afa} Ft
+                    tr
+                        td Összesen:
+                        td #{sum} Ft
+                

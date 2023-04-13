@@ -1,0 +1,39 @@
+extends base2 
+
+block content
+    include _pagination
+    main.main            
+        div.card-container
+            script(src='./js/paintings.js',type="module")      
+            each painting in paintings
+                .card 
+                    .card__header
+                            .card__picture
+                                .card__picture-overlay &nbsp;
+                                img.card__picture-img(src=painting.imageURL[0] , alt='Painting')
+                            h3.heading-tertirary
+                                span=painting.cim 
+                    //- .card__details
+                    //-     h4.card__sub-heading=painting.festo 
+                    //-     .card__data
+                    //-         svg.card__icon
+                    //-             use(xlink:href='/img/icons.svg#icon-user')
+                    //-         span=painting.meret
+                    //-     .card__data
+                    //-         svg.card__icon
+                    //-             use(xlink:href='/img/icons.svg#icon-user')
+                    //-         span=painting.tipus
+                    //-     .card__data
+                    //-         svg.card__icon
+                    //-             use(xlink:href='/img/icons.svg#icon-calendar')
+                    //-         span=painting.feltoltesDatum.toLocaleString('hu-HU',{month:'long',year:'numeric', day:'numeric'})
+                    //-     .card__data
+                    //-         svg.card__icon
+                    //-             use(xlink:href='/img/icons.svg#icon-user')
+                    //-         span=painting.tipus             
+                    .card__footer
+                        a.btn.btn--green.btn--small(href=`/painting/${painting.slug}`) Részletek
+                        span.card__footer-value=painting.ar.toLocaleString()
+                        a.btn.btn--green.btn--cart(href='', data-slug=`${painting.slug}`) 
+                            img(src='/img/icons/shopping_cart_25px.png')
+                        

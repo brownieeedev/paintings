@@ -1,0 +1,65 @@
+extends base2
+
+block content
+    script(src='/js/updateSettings.js',type="module")
+    main.main
+        .user-view
+            nav.user-view__menu
+                ul.side-nav
+                    li.side-nav--active
+                        a(href='#')
+                            svg
+                                use(xlink:href='img/icons.svg#icon-settings')
+                            | Beállítások 
+                    li
+                        a(href='/rendeleseim')
+                            svg
+                                use(xlink:href='img/icons.svg#icon-briefcase')
+                            | Rendeléseim
+                    li
+                        a(href='#')
+                            svg
+                                use(xlink:href='img/icons.svg#icon-credit-card')
+                            | Számlázás
+                    - if (user==='admin')
+                        .admin-nav
+                            h5.admin-nav__heading Admin
+                            ul.side-nav
+                                li
+                                    a(href='#')
+                                        svg
+                                            use(xlink:href='img/icons.svg#icon-map')
+                                        | Festmények kezelése
+                                li
+                                    a(href='#')
+                                        svg
+                                            use(xlink:href='img/icons.svg#icon-users')
+                                        | Felhasználók 
+            .user-view__content
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Felhasználói fiók beállításai
+                    //- form.form.form-user-data(action='/submit-user-data' method='POST') submitting FORM without API
+                    form.form.form-user-data
+                        .form__group
+                            label.form__label(for='name') Teljes név
+                            input#name.form__input.form-input-name(type='text', value=`${user.nev ?user.nev:'Adja meg a nevét'}`, required,name ='nev')
+                        .form__group.ma-bt-md
+                            label.form__label(for='email') Email
+                            input#email.form__input(type='email', value=`${user.email}`, required,name='email')
+                        .form__group.right
+                            button.btn.btn--small.btn--green Beállítások mentése 
+                .line &nbsp;
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Jelszó megváltoztatása
+                    form.form.form-user-settings
+                        .form__group
+                            label.form__label(for='password-current') Jelenlegi jelszó
+                            input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                        .form__group
+                            label.form__label(for='password') Új jelszó
+                            input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                        .form__group.ma-bt-lg
+                            label.form__label(for='password-confirm') Jelszó megerősítése
+                            input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                        .form__group.right
+                            button.btn.btn--small.btn--green.btn--save-password Jelszó mentése

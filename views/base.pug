@@ -1,0 +1,20 @@
+html(lang="en")
+    //HEADER
+    include _header
+body
+    include _nav
+
+    //CONTENT
+    block content
+        h1 This is a placeholder
+
+    include _footer
+
+    if (currentPage==='login')
+        script(src='/js/login.js',type="module")
+    else if (currentPage==='newpass')
+        script(src='/js/newpassword.js',type="module")
+    else if (currentPage==='signup')
+        script(src='/js/signup.js',type="module")       
+    else
+        script(src='/js/logout.js',type="module")

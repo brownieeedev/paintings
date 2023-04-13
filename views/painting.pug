@@ -1,0 +1,50 @@
+extends base2    
+
+block content
+    script.window.idx=0
+    script(src='/js/changePictures.js',type="module")  
+    section.section-header
+        .header__hero
+            .header__hero-overlay &nbsp;
+        .heading-box
+            h1.heading-primary
+                span=painting.cim
+    section.images-section
+        div.container
+            div.previous
+                img(src='/img/icons/more_than_42px_back.png')
+            div.images-div                
+                img.images-div-img.img-1(src=painting.imageURL[0])
+                img.images-div-img.img-2.hidden(src=painting.imageURL[1])
+                img.images-div-img.img-3.hidden(src=painting.imageURL[2])               
+            div.next
+                img(src='/img/icons/more_than_42px.png')  
+    section.section-description
+        .overview-box
+            div
+                .overview-box__group
+                    h2.heading-secondary.ma-bt-lg Részletek
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            se(xlink:href='/img/icons.svg#icon-calendar')
+                        span.overview-box__label Festő
+                        span.overview-box__text=painting.festo
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/img/icons.svg#icon-user')
+                        span.overview-box__label Festmény típusa
+                        span.overview-box__text=painting.tipus
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/img/icons.svg#icon-trending-up')
+                        span.overview-box__label Feltöltés dátuma
+                        span.overview-box__text=painting.feltoltesDatum.toLocaleString('hu-HU',{month:'long',year:'numeric', day:'numeric'})
+                    .overview-box__detail
+                        svg.overview-box__icon
+                            use(xlink:href='/img/icons.svg#icon-star')
+                        span.overview-box__label Ára
+                        span.overview-box__text=painting.ar+" Ft"                    
+        .description-box
+            h2.heading-secondary.ma-bt-lg=painting.festo
+            p.description__text Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            button.btn.btn--green.span-all-rows Kosárba!  

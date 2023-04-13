@@ -1,0 +1,17 @@
+extends base2
+block content
+    main.main
+        .user-view__form-container
+                        h2.heading-secondary.ma-bt-md Felhasználói fiók létrehozása
+                        form.form.form-user-signup
+                            .form__group
+                                label.form__label(for='email') Email
+                                input#email.form__input(type='email', placeholder='sajat@gmail.com', required, minlength='8')
+                            .form__group.ma-bt-lg
+                                label.form__label(for='password') Jelszó
+                                input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            .form__group.ma-bt-lg
+                                label.form__label(for='password-confirm') Jelszó megerősítése
+                                input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            .form__group.right
+                                button.btn.btn--small.btn--green.btn--signup Fiók létrehozása

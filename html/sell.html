@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../PaintingWebshop/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/e4f573bfcb.js" crossorigin="anonymous"></script>
+    <title>Paintify</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <section class="banner">
+        <nav>
+            <div class="div-logo">
+                <a href="index.html">
+                    <h1>Paintify</h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="items.html">Paintings</a></li>
+                    <li><a href="" class="chosen">Sell</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section class="form">
+        <form class="form1" action="">
+            <div class="input-group">
+                <input required type="text" name="artist">
+                <label for="artist"><i class="fa-solid fa-user"></i>Artists Name</i></label>
+
+            </div>
+            <div class="input-group">
+                <input required type="email" name="artist">
+                <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+
+            </div>
+            <div class="input-group">
+                <input required type="text" name="painting">
+                <label for="painting"><i class="fa-solid fa-signature"></i>Name of Your Painting</label>
+            </div>
+            <div class="input-group">
+                <select required name="select" id="">
+                    <option value="" selected disabled></option>
+                    <option value="Oil Painting">Oil Painting</option>
+                    <option value="WaterColor Painting">Watercolor Painting</option>
+                    <option value="Acrylic">Acrylic</option>
+                    <option value="Other">Other Painting</option>
+                </select>
+                <label for="select"><i class="fa-solid fa-palette"></i>Type of Your Painting</label>
+            </div>
+            <div class="input-group">
+                <input required type="text">
+                <label for=""><i class="fa-solid fa-ruler"></i>Size of Your Painting <p
+                        style="font-size:10px; display: inline-block;">(example: 400cm x 800cm)</p> </label>
+            </div>
+            <div class="input-group">
+                <input required type="number">
+                <label for=""><i class="fa-solid fa-money-bill"></i>Price</label>
+            </div>
+            <div class="input-group">
+                <textarea name="" id="" cols="30" rows="10" placeholder=""></textarea>
+                <label for=""><i class="fa-solid fa-message"></i>Description of your painting(optional)</label>
+            </div>
+            <div class="input-group">
+                <input id="file" required type="file">
+                <label for=""><i class="fa-solid fa-image"></i>Upload 2-3 pictures of your painting</label>
+
+            </div>
+            <button type="submit" class="dateSkirtLabel">UPLOAD PAINTING<i class="fa-solid fa-paper-plane"
+                    id="leftIconPaperPlane"></i></button>
+        </form>
+    </section>
+</body>

@@ -1,0 +1,20 @@
+extends base2
+
+block content
+    main.main
+        .login-form
+            h2.heading-secondary.ma-bt-lg Jelentkezz be a fiókodba
+            form.form.form--login#form
+                .form__group
+                    label.form__label(for='email') Email
+                    input#email.form__input(type='email' placeholder='sajat@gmail.com', required)
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Jelszó
+                    input#password.form__input(type='password' placeholder='••••••••', required, minlength='8')
+                .form__group.fiokletrehozasa
+                    span Még nem regisztráltál?
+                    a(href='/signup') Fiók létrehozása
+                    a.elfelejtett(href='/newpassword') Elfelejtett jelszó?
+                    button.btn.btn--green Bejelentkezés
+
+    

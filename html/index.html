@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/e4f573bfcb.js" crossorigin="anonymous"></script>
+    <title>Paintify</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="banner">
+        <nav>
+            <div class="div-logo">
+                <a href="">
+                    <h1>Paintify</h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="" class="chosen">Home</a></li>
+                    <li><a href="items.html">Paintings</a></li>
+                    <li><a href="sell.html">Sell</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="mainPageDiv">
+            <a href="items.html">Search</a>
+        </div>
+    </section>
+    <section class="section2">
+        <div class="section2-div">
+            <h1>What we offer</h1>
+            <p>
+                We are working as a platform for you to find luxorius detailed modern paintings,
+                that could fit in to your art gallery. We are also giving space for upcoming artist, to sell their
+                paintings through this platform.
+            </p>
+            <div class="section2-row" >
+                <div class="section2-col" id="buyPaintings">
+                    <img src="../PaintingWebshop/paintings/s1.jpg" alt="">
+                    <h3>Buy Paintings</h3>
+                </div>
+                <div class="section2-col" id="sellPaintings">
+                    <img src="../PaintingWebshop/paintings/s2.jpg" alt="">
+                    <h3>Sell Paintings</h3>
+                </div>
+            </div>
+            <h1>Something here</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid adipisci voluptates esse perspiciatis repellat, facere harum aspernatur possimus minima nihil mollitia eveniet explicabo deleniti aperiam repudiandae? Quidem expedita est dolor.</p>
+            <br>
+        </div>
+    </section>
+        <footer>
+            <h4>About Us</h4>
+            <p  style="font-size: 10px; line-height: 20px;">You can find us on Facebook, Instagram, Email consectetur adipisicing elit. Animi suscipit fugiat, <br> aliquam vitae eius adipisci ipsam. Tempora voluptates quos, porro fuga   nesciunt <br> cumque excepturi totam magnam consequatur, alias voluptatibus dolor.</p>
+            <div class="icons">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-tiktok"></i>
+            </div>
+            <p id="bottom">&copy;All rights reserved 2023</p>
+        </footer>
+    </section>
+<script>
+    document.getElementById("buyPaintings").addEventListener("click", ()=>{console.log("buyClicked");window.open("D:/TANULÁS/WEBDEVELOPMENT/Projects/PaintingWebshop/items.html",'_self')});
+    document.getElementById("sellPaintings").addEventListener("click", ()=>{console.log("sellClicked");window.open("D:/TANULÁS/WEBDEVELOPMENT/Projects/PaintingWebshop/sell.html",'_self')});
+</script>
+</body>
+
+</html>

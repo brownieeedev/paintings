@@ -1,0 +1,29 @@
+section.banner
+    head
+    body
+        nav
+            div.div-logo
+                a(href="/")
+                    h1 Paintify
+            div.nav-links
+                ul
+                    li
+                        a(href="/") Kezdőlap
+                    li
+                        a(href="/paintings") Festmények
+                    li
+                        a(href="/sell") Eladás
+                    li
+                        a(href="") Kapcsolat
+                    if user
+                        li
+                            a.nav__el(href='/me')
+                                img(src='/img/user_30px.png')
+                        li
+                            a.nav__el.nav__el--cta.nav__el--logout#logout Kijelentkezés
+                            
+                    else
+                        li 
+                            a.nav__el.nav__el--cta(href="/login") Bejelentkezés                    
+        div.mainPageDiv
+            a(href="/paintings") Keress         
