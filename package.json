@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "build": "webpack"
@@ -28,7 +28,7 @@
     "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "firebase": "^9.19.0",
-    "firebase-admin": "^11.5.0",
+    "firebase-admin": "^11.7.0",
     "helmet": "^6.0.1",
     "hpp": "^0.2.3",
     "html-to-text": "^9.0.5",

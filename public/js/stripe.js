@@ -1,4 +1,3 @@
-console.log('stripee');
 const stripe = Stripe(
   'pk_test_51MubC3AMv0hvlS1F0AdQEoPGuidHGQ6cvew200XINrsWdbQIOyAeFApsKxyXnFTyFOoICZRPFxx8Jb7GogrjYFCP00kGHwYUh1'
 );
@@ -6,13 +5,10 @@ const stripe = Stripe(
 document
   .querySelector('.btn--checkout')
   .addEventListener('click', async (e) => {
-    console.log('clicked');
     e.target.textContent = 'Feldolgozás...';
     const sum = e.target.dataset.sum;
-    console.log(sum);
     //checkout session from api endpoint
     try {
-      console.log('try');
       const session = await fetch(`api/v1/rendeles/checkout-session/${sum}`, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         headers: {

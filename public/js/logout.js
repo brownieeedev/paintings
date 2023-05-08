@@ -7,7 +7,6 @@
 document
   .querySelector('.nav__el--logout')
   .addEventListener('click', async () => {
-    console.log('clicked');
     try {
       const response = await fetch('/api/v1/users/logout', {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.

@@ -22,6 +22,14 @@ exports.getAllPaintings = async (req, res) => {
     .pagination();
 
   const paintings = await features.query;
+  //pagination
+  const allPaintings = await Painting.find({ jovahagyott: true });
+  const pagesNum = Math.ceil(allPaintings.length / 9);
+  let pages = [];
+  for (let i = 1; i <= pagesNum; i++) {
+    pages.push(i);
+  }
+
   //2) Get filePaths to pictures
   const bucket = admin.storage().bucket();
   const paintingsWithUrl = await Promise.all(
@@ -48,6 +56,50 @@ exports.getAllPaintings = async (req, res) => {
     title: 'All paintings',
     paintings: paintingsWithUrl,
     currentPage: 'paintings',
+    pages,
+  });
+};
+
+exports.getSpecificPaintings = async (req, res) => {
+  //finding searched paintings
+  const query = req.params.query;
+  const paintings = await Painting.find({
+    $and: [{ $text: { $search: query } }, { jovahagyott: true }],
+  });
+  //pagination
+  const pagesNum = Math.ceil(paintings.length / 9);
+  let pages = [];
+  for (let i = 1; i <= pagesNum; i++) {
+    pages.push(i);
+  }
+  //elérési utak a képekhez
+  const bucket = admin.storage().bucket();
+  const paintingsWithUrl = await Promise.all(
+    paintings.map(async (painting) => {
+      const imageURLs = await Promise.all(
+        painting.kepek.map(async (kepek) => {
+          const [imageURL] = await bucket.file(`images/${kepek}`).getSignedUrl({
+            version: 'v4',
+            action: 'read',
+            expires: Date.now() + 60 * 60 * 1000, // 1 hour
+          });
+          return imageURL;
+        })
+      );
+      const paintingWithImageURL = {
+        ...painting.toObject(),
+        imageURL: imageURLs,
+      };
+      return paintingWithImageURL;
+    })
+  );
+  //renderelés
+  res.status(200).json({
+    status: 'success',
+    title: 'Searched paintings',
+    paintings: paintingsWithUrl,
+    currentPage: 'paintings',
+    pages,
   });
 };
 
@@ -166,12 +218,16 @@ exports.getCart = async (req, res) => {
 
 exports.getMyOrders = async (req, res) => {
   //1) minden rendeles
-  console.log(req.user.id);
   const rendelesek = await Rendeles.find({ felhasznaloId: req.user.id });
-  console.log(rendelesek);
   const festmenyIds = rendelesek.map((el) => el.festmenyId);
   const paintings = await Painting.find({ _id: { $in: festmenyIds } });
 
+  //pagination
+  const pagesNum = Math.ceil(paintings.length / 9);
+  let pages = [];
+  for (let i = 1; i <= pagesNum; i++) {
+    pages.push(i);
+  }
   //képek lekérése
   //2) Get filePaths to pictures
   const bucket = admin.storage().bucket();
@@ -194,10 +250,14 @@ exports.getMyOrders = async (req, res) => {
       return paintingWithImageURL;
     })
   );
-
-  res.status(200).render('paintings', {
-    title: 'Festmenyeim',
-    currentPage: 'paintings',
-    paintings: paintingsWithUrl,
-  });
+  if (pages.length === 0) {
+    res.status(200).render('noRendelesek');
+  } else {
+    res.status(200).render('paintings', {
+      title: 'Festmenyeim',
+      currentPage: 'paintings',
+      paintings: paintingsWithUrl,
+      pages,
+    });
+  }
 };

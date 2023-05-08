@@ -49,16 +49,28 @@ exports.getAllPaintings = async (req, res, next) => {
     .pagination();
 
   const paintings = await features.query; //.explain(); -->indexes
+  const allPaintings = await Painting.find();
+  const paintingsLength = allPaintings.length;
+  const pages = Math.ceil(paintingsLength / 6); //ceil(numberOfPaintings/paintingsPerPage);
+  console.log('Number of paintings:' + paintingsLength);
+  console.log('Pages:' + pages);
 
   //const paintings = await Painting.find();
 
   res.status(200).json({
     status: 'success',
-    results: paintings.length,
-    data: {
-      paintings,
-    },
+    results: allPaintings.length,
+    paintings,
+    pages,
   });
+};
+
+exports.getSpecificPaintings = async (req, res) => {
+  const query = req.params.query;
+  const paintings = await Painting.find({
+    $and: [{ $text: { $search: query } }, { jovahagyott: true }],
+  });
+  const pages = 1;
 };
 
 exports.modifyPaintingPhoto = async (req, res, next) => {
@@ -87,11 +99,6 @@ exports.modifyPaintingPhoto = async (req, res, next) => {
 exports.createPainting = async (req, res) => {
   try {
     const photos = req.files;
-    console.log('PHOTOS');
-    console.log(photos);
-    console.log('BUFFER');
-
-    console.log(photos[0].buffer);
     //processing images
     const processedBuffers = [];
 
@@ -117,10 +124,6 @@ exports.createPainting = async (req, res) => {
           feltoltesDatum: req.body.feltoltesDatum,
           jovahagyott: req.body.jovahagyott,
         });
-        console.log(
-          '--------------------------ÚJ FESTMÉNY--------------------------'
-        );
-        console.log(newPainting);
         try {
           await newPainting.save();
         } catch (err) {
@@ -141,8 +144,6 @@ exports.createPainting = async (req, res) => {
         Painting.find(query)
           .then(async (results) => {
             picNames = results.map(({ kepek }) => kepek).flat();
-            console.log('picNames KEPEK');
-            console.log(picNames);
             //fájlnevek feltöltése firebase-re
             for (let i = 0; i < photos.length; i++) {
               const filePath = `images/${picNames[i]}`;
@@ -151,7 +152,6 @@ exports.createPainting = async (req, res) => {
                 contentType: 'image/jpeg',
               });
             }
-            console.log('All files uploaded successfully.');
           })
           .catch((err) => {
             console.error(err);

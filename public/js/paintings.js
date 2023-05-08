@@ -1,5 +1,3 @@
-console.log('helloka');
-
 const buttons = document.querySelectorAll('.btn--cart');
 buttons.forEach((button) => {
   button.addEventListener('click', async (e) => {

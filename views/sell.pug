@@ -5,6 +5,10 @@ block content
     body
         section.form
         h1.heading-secondary.ma-bt-md.eladascim Add el a festményeidet
+        if user
+            
+        else
+            h2.heading-secondary.ma-bt-md.jelentkezzbe (Jelentkezz be a feltöltéshez)
         form.form1(method='POST' enctype='multipart/form-data')
             .input-group
                 input#festo(required='', type='text', name='festo' )

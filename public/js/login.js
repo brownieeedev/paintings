@@ -1,8 +1,6 @@
 //const babel = require('@babel/polyfill');
 //import axios from '../../node_modules/axios/lib/axios';
 
-console.log('helloka');
-
 const login = async (email, password) => {
   try {
     const response = await fetch('/api/v1/users/login', {

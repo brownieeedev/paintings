@@ -16,6 +16,8 @@ router
   );
 
 router.route('/').get(paintingsController.getAllPaintings);
+
+router.route('/:query').get(paintingsController.getSpecificPaintings);
 router
   .route('/:id')
   .get(paintingsController.getPainting)

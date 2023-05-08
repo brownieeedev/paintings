@@ -1,8 +1,11 @@
-extends base2
-
+html(lang="en")
+    //HEADER
+    include _header
 block content
-    main.main
+    script(src='/js/login.js',type="module")
+    main.main.main-login
         .login-form
+            h2.login-title Paintify
             h2.heading-secondary.ma-bt-lg Jelentkezz be a fiókodba
             form.form.form--login#form
                 .form__group

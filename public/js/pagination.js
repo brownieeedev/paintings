@@ -1,6 +1,40 @@
 const listItems = document.querySelectorAll('.pagination ul li');
 const currentUrl = window.location.href;
 
+// const numofPaintings = async () => {
+//   //nem ezzel lett megoldva a pagination
+//   console.log('numofpaintings');
+//   try {
+//     const response = await fetch('api/v1/paintings', {
+//       method: 'GET',
+//     });
+//     const data = await response.json();
+//     const pages = data.pages;
+//     return pages;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// numofPaintings();
+
+document.querySelector('.btnSearch').addEventListener('click', async (e) => {
+  try {
+    const query = document.getElementById('searchbar').value;
+    if (query !== '' || query.length >= 3) {
+      const response = await fetch(`/paintings/${query}`, {
+        method: 'GET',
+      });
+      const result = await response.json();
+      if (result.status === 'success') {
+        window.location.reload(true);
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 listItems.forEach((item) => {
   item.addEventListener('click', () => {
     const value = item.getAttribute('data-value');

@@ -33,7 +33,7 @@ const paintingSchema = new mongoose.Schema({
   meret: { type: String, required: true },
   ar: { type: Number, required: true },
   feltoltesDatum: { type: Date, required: true, default: Date.now() },
-  jovahagyott: { type: Boolean, required: true, default: true },
+  jovahagyott: { type: Boolean, required: true, default: false },
 });
 
 paintingSchema.post('save', async function () {
@@ -84,6 +84,8 @@ paintingSchema.pre(/^find/, function (next) {
   });
   next();
 });
+
+paintingSchema.index({ '$**': 'text' });
 
 const Painting = mongoose.model('Painting', paintingSchema, 'FestmenyekTeszt');
 module.exports = Painting;

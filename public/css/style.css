@@ -103,7 +103,7 @@ nav div h1 {
 }
 .section2-div {
   text-align: center;
-  width: 80%;
+  width: 60%;
   margin: auto;
 }
 .section2-div h1 {
@@ -112,9 +112,9 @@ nav div h1 {
   font-weight: 500;
 }
 .section2-div p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
-  line-height: 22px;
+  line-height: 25px;
   padding: 10px;
 }
 .section2-row {
@@ -132,7 +132,7 @@ nav div h1 {
 .section2-col img {
   padding-top: 30px;
   width: 200px;
-  height: 240px;
+  height: 245px;
 }
 .section2-col h3 {
   font-size: 17px;
@@ -236,7 +236,7 @@ footer p {
 }
 
 section.form {
-  background: linear-gradient(white, rgba(232, 223, 223, 0.5));
+  background: linear-gradient(rgb(255, 255, 255), rgba(232, 223, 223, 0.5));
 }
 .form1 {
   width: 90%;
@@ -359,6 +359,7 @@ body {
   font-family: 'Lato', sans-serif;
   color: #777;
 
+  background: #f7f7f7;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1793,6 +1794,9 @@ table {
 .cart-info div {
   margin-top: 20px;
 }
+table tbody tr:not(.totalprice table tr):not(:first-child) {
+  border-bottom: 1px solid rgb(236, 205, 205);
+}
 
 th {
   text-align: left;
@@ -1833,7 +1837,6 @@ td a {
   /* font-weight: 600; */
 }
 .totalprice table tr:last-child {
-  border-bottom: none;
   font-size: 16px;
   font-weight: 700;
   font-size: 18px;
@@ -1852,8 +1855,15 @@ th:last-child {
 
 /* pagination */
 
+.containerPagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .pagination {
   display: flex;
+  flex-grow: 1;
   padding-top: 10px;
   align-items: center;
   background: #f7f7f7;
@@ -1896,4 +1906,38 @@ th:last-child {
   font-size: 30px;
   text-align: center;
   padding-top: 30px;
+}
+
+.jelentkezzbe {
+  font-size: 15px;
+  text-align: center;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  background: #f7f7f7;
+  margin: 10px;
+}
+.searchbar input {
+  background: #f7f7f7;
+  width: 25%;
+  border-radius: 60px;
+  padding: 10px;
+}
+.searchbar button {
+  background: transparent;
+  border: 0px;
+  outline: none;
+  cursor: pointer;
+}
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../img/paintings/login_cover.jpg);
+}
+.login-title {
+  padding-bottom: 10px;
+  font-style: italic;
 }

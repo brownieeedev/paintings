@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const session = require('express-session');
 const { store } = require('./utils/mongoStore');
 const dotenv = require('dotenv');
@@ -33,6 +34,8 @@ app.use(
     //mimeTypes: {},
   })
 );
+
+app.use(compression());
 
 //SESSION COOKIE és store
 app.use(
@@ -123,6 +126,8 @@ app.use(
     whitelist: ['cim'],
   })
 ); //prevent parameter pollution
+
+//new line of code
 
 //limit request from same API
 const limiter = rateLimit({

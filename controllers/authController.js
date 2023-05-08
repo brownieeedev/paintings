@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 // const sendEmail = require('../utils/email');
 const crypto = require('crypto');
-const { Email, Email2 } = require('../utils/email');
+// const { Email, Email2 } = require('../utils/email');
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -186,10 +186,8 @@ exports.forgotPassword = async (req, res, next) => {
   if (!user) {
     return res.status(404).send('There is no user with that email address');
   }
-  console.log(user._id);
   //2) Generate the random reset token
   const resetToken = user.createPasswordResetToken();
-  console.log(resetToken);
   await user.save({ validateBeforeSave: false });
   //3) Send it to users email
   const resetURL = `${req.protocol}:${req.get(

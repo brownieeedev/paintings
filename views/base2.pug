@@ -10,9 +10,7 @@ body
 
     include _footer
 
-    if (currentPage==='login')
-        script(src='/js/login.js',type="module")
-    else if (currentPage==='newpass')
+    if (currentPage==='newpass')
         script(src='/js/newpassword.js',type="module")
     else if (currentPage==='signup')
         script(src='/js/signup.js',type="module")

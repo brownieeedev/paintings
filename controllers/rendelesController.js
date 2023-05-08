@@ -11,11 +11,7 @@ const { store } = require('../utils/mongoStore');
 exports.getCheckoutSession = async (req, res, next) => {
   //1) get the painting/paintings?
   const sum = req.params.sum * 1;
-  console.log('SUM in the checkout');
-  console.log(sum);
-
   const painting = await Painting.findOne({ cim: 'Koi' });
-  console.log(painting);
 
   //2) create session
   const session = await stripe.checkout.sessions.create({
@@ -95,8 +91,6 @@ exports.removeFromCart = async (req, res) => {
 exports.addToCart = async (req, res) => {
   const slug = req.params.slug;
   const painting = await Painting.findOne({ slug: slug });
-  console.log('FIND PAINTING BY SLUG');
-  console.log(painting);
 
   // Add item to session object
   req.session.cart = req.session.cart || {};
@@ -109,9 +103,6 @@ exports.addToCart = async (req, res) => {
     ar: painting.ar,
     kepek: painting.kepek[0],
   });
-  console.log('USERID');
-  console.log(req.session.userId);
-  console.log(req.session.cart[req.session.userId]);
 
   await store.set(userId, req.session.cart[userId]);
 

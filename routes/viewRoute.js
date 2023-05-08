@@ -17,11 +17,11 @@ router.get('/painting/:slug', viewsController.getPainting);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/rendeleseim', authController.protect, viewsController.getMyOrders);
 router.get('/login', viewsController.getLoginForm);
-router.get('/sell', viewsController.getSellPage);
+router.get('/sell', authController.isLoggedIn, viewsController.getSellPage);
 router.get('/signup', viewsController.signUp);
 router.get('/newpassword', viewsController.newPassword);
 router.get('/cart', viewsController.getCart);
-
+router.get('/paintings/:query', viewsController.getSpecificPaintings);
 router.post(
   '/submit-user-data',
   authController.protect,

@@ -6,7 +6,6 @@ const htmlToText = require('html-to-text');
 class Email {
   constructor(user, url1, url2) {
     this.to = user.email;
-    // this.firstName = user.name.split(' ')[0];
     this.url1 = url1;
     this.url2 = url2;
     this.from = 'Paintify <brownieeedev@gmail.com>';
@@ -41,7 +40,7 @@ class Email {
     //Send the email
     //1) Render HTML, and pass variables
     const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
-      firstName: 'Subscriber',
+      firstName: 'Feliratkozó',
       url1: this.url1,
       url2: this.url2,
       subject,
